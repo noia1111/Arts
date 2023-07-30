@@ -1,0 +1,8 @@
+<div class="container">
+  <div class="d-flex justify-content-center">
+    <div class="col-md-6">
+      <h2 ><%= @user.name %> さんのフォロワー一覧</h2>
+      <%= render 'public/relationships/follow_list', users: @users %>
+    </div>
+  </div>
+</div>

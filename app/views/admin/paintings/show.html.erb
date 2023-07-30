@@ -1,0 +1,68 @@
+<div class="container">
+  <div class="d-flex justify-content-center">
+    <div class="col-md-8 offset-md-1">
+      <h2><%= @painting.title %></h2>
+      <div>
+        <%= flash[:notice] %>
+      </div>
+
+        <div class="form-group">
+            <%= image_tag @painting.get_image(512,512) %>
+        </div>
+        <% if @painting.caption.present? %>
+        <h4>説明<br>
+          <%= @painting.caption %></h4>
+        <% end %> 
+          
+        <div class="form-group">
+          <%= link_to admin_user_path(@painting.user) do %>
+            <%= image_tag @painting.user.get_icon_image(100,100),style: "border-radius: 50%; border: 4px solid #6D9295; box-shadow: 0 0 6px grey; overflow: hidden;" %><br>
+            <%= @painting.user.name %>
+          <% end %>
+        </div>
+
+        <div class="form-group">
+          <%= @painting.caption %>
+        </div>
+
+        <div id = "favorite_<%= @painting.id %>">
+          <%= render partial: "public/favorites/favorite", locals: { painting: @painting }, remote: true %>
+        </div>
+
+        <% if admin_signed_in? %>
+          <div class="form-group">
+            <%= link_to '投稿を編集する', edit_admin_painting_path(@painting), class: "btn btn-sm btn-success" %>
+            <%= link_to '投稿を削除する', admin_painting_path(@painting), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %>
+          </div>
+        <% end %>
+
+        <div class="form-group">
+          コメント件数：<%= @painting.painting_comments.count %>
+        </div>
+
+        <table>
+          <% @painting.painting_comments.each do |painting_comment| %>
+            <tr>
+              <td>
+                <%= link_to user_path(painting_comment.user) do %>
+                  <%= image_tag painting_comment.user.get_icon_image(100,100) %><br>
+                  <%= painting_comment.user.name %>
+                <% end %>
+              </td>
+              <td>
+                <%= painting_comment.comment %>
+              </td>
+              <% if admin_signed_in? %>
+                <td>
+                  <%= link_to 'コメントを消す', painting_painting_comment_path(painting_comment.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %>
+                </td>
+              <% end %>
+            </tr>
+          <% end %>
+        </table>
+
+
+
+    </div>
+  </div>
+</div>

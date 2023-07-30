@@ -1,0 +1,13 @@
+<!-- いいね機能の部分テンプレ、ローカル変数paintingに代入が必要 -->
+<% if !user_signed_in? %>
+  <i class="fa fa-heart unfavorite-btn"></i>
+  <%= painting.favorites.length %>
+<% elsif painting.favorited_by?(current_user) %>
+  <%= link_to painting_favorites_path(painting), method: :delete, remote: true do %>
+    <i class="fa fa-heart favorite-btn"></i><%= painting.favorites.count %>
+  <% end %>
+<% else %>
+  <%= link_to painting_favorites_path(painting), method: :post, remote: true do %>
+    <i class="fa fa-heart unfavorite-btn"></i><%= painting.favorites.count %>
+  <% end %>
+<% end %>

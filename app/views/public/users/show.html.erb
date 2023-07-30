@@ -1,0 +1,74 @@
+<p id="notice"></p>
+<div class="container">
+
+
+
+  <div class="row mb-3">
+    <div class="col-md-2">
+      <strong></strong>
+    </div>
+
+  </div class="row-md-6">
+    <div class="header_image">
+      <%= image_tag @user.get_header_image(900,200), width: "100%",height: "30%" %>
+    <div class="icon_image">
+    <%= image_tag @user.get_icon_image(150,150) %>
+    </div>
+    <div class=" col-md-2 user_name">
+      <h5><td class="col-md-3"><%= @user.name %></td><h5>
+      
+    <%= link_to  user_followings_path(@user) do %>
+      フォロー数: <%= @user.followings.count %><br>
+    <% end %>
+	  <%= link_to  user_followers_path(@user) do %>
+      フォロワー数: <%= @user.followers.count %>
+    <% end %>
+    </div>
+    </div>
+  <div class="row">
+
+    <div class="row-md-6 mt-3 " style="margin-left: 70%;">
+    <% if @user == current_user %>
+      <%= link_to "ユーザー編集", edit_user_path, class: "btn edit-button" %>
+    <% end %>
+    <button class="btn" id="intro-button" >ユーザー紹介</button>
+    <%= link_to "いいね一覧", favorites_user_path(@user), class: "btn btn-pink" %>
+    <% if current_user && current_user != @user %>
+      <% if current_user.following?(@user) %>
+        <%= link_to "フォロー中", user_relationships_path(@user.id), method: :delete, class: "follow-btn followed" %>
+      <% else %>
+        <%= link_to "フォロー", user_relationships_path(@user.id), method: :post, class: "follow-btn" %>
+      <% end %>
+    <% end %>
+    <div id="modal" class="modal">
+      <div class="modal-content">
+        <!-- モーダルのコンテンツ -->
+        <div class="row">
+          <div class="col-md-11"></div>
+          <span class="close">&times;</span>
+        </div>
+        <br>
+        <table>
+        <tr>
+          <td>ユーザーネーム</td><td><%= @user.name%></td>
+        </tr>
+        <tr>
+          <td>性別</td><td><%= @user.is_male ? "男性" : "女性" %></td>
+        </tr>
+        <tr>
+          <td>年齢</td><td><%= @user.age%></td>
+        </tr>
+        <tr>
+          <td>自己紹介</td><td><%= @user.introduction%></td>
+        </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="row" style=" margin-top: 125px;">
+    <%= render 'public/users/painting_index', paintings: @paintings %>
+  </div>
+
+
+</div>

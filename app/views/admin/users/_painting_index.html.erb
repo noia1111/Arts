@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="d-flex flex-wrap align-items-center">
+    <% paintings.each do |painting| %>
+      <!-- 非公開設定かつ現在ユーザーの作品でない場合を取り除く条件分岐 -->
+        <div class="d-block mx-auto bg-lightgray rounded" style="padding:60px,30px;">
+          <%= link_to admin_painting_path(painting.id) do %>
+          <div class="painting_icon">
+            <%= image_tag painting.get_image(200, 200) %>
+          </div>
+          <% end %>
+          <div class="text-center"><strong><%= painting.title %></strong></div>
+        </div>
+    <% end %>
+  </div>
+  <div class="d-flex justify-content-center">
+    <%= paginate paintings %>
+  </div>
+</div>

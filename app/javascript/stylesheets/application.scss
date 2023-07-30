@@ -1,0 +1,307 @@
+@use '~bootstrap/scss/bootstrap';
+@import "bootstrap";
+.custom-height {
+  height: 50px;
+}
+
+/* モーダルのスタイル設定 */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 30% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 40%;
+  font-size: 21px;
+  border-radius: 20px;
+}
+
+/* 閉じるボタンのスタイル設定 */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 42px;
+  font-weight: bold;
+  cursor: pointer;
+
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+/* 投稿ボタン */
+/* 枠 */
+.v21_663 {
+  width: 149px;
+  height: 55px;
+  background: rgba(247,186,230,1);
+  padding: 9px 39px;
+  margin: 10px;
+  opacity: 1;
+  top: 0px;
+  left: 0px;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  overflow: hidden;
+  color: rgba(77,16,60,1);
+  font-family: Mplus 1p;
+  font-weight: Regular;
+  font-size: 24px;
+  text-align: center;
+  border: none; /* 罫線をなくすためにborderプロパティを設定 */
+}
+.v21_663:hover {
+  background-color: rgba(227, 103, 171, 1); /* 枠の背景色を変更 */
+}
+.edit-button {
+  /* 角を少し丸くする */
+  border-radius: 5px;
+  color: white;
+  /* 背景色を77CFBFに設定する */
+  background-color: #77CFBF;
+  height: 38px;
+  /* カーソルが重なったときに背景色が62CFBBになる */
+  transition: background-color 0.2s;
+  text-decoration: none;
+}
+/* カーソルが重なったときのスタイル */
+.edit-button:hover {
+  background-color: #62CFBB;
+}
+
+#intro-button {
+  /* ボーダーをなくす */
+  border: none;
+  /* 角を少し丸くする */
+  border-radius: 5px;
+  /* 背景色を88B6BAに設定する */
+  background-color: #88B6BA;
+  /* カーソルが重なったときに少し暗くする */
+  transition: filter 0.2s;
+  height: 38px;
+  color: white;
+}
+
+/* カーソルが重なったときのスタイル */
+#intro-button:hover {
+  filter: brightness(80%);
+}
+/* カスタムピンクボタンスタイル */
+.btn-pink {
+  color: #ffffff;
+  background-color: #ff69b4;
+  border-color: #ff69b4;
+}
+
+.btn-pink:hover {
+  color: #ffffff;
+  background-color: #ff1493;
+  border-color: #ff1493;
+}
+
+.btn-pink:focus,
+.btn-pink.focus {
+  color: #ffffff;
+  background-color: #ff1493;
+  border-color: #ff1493;
+  box-shadow: 0 0 0 0.2rem rgba(255, 105, 180, 0.5);
+}
+
+.btn-pink.disabled,
+.btn-pink:disabled {
+  color: #ffffff;
+  background-color: #ff69b4;
+  border-color: #ff69b4;
+}
+
+.btn-pink:not(:disabled):not(.disabled):active,
+.btn-pink:not(:disabled):not(.disabled).active,
+.show > .btn-pink.dropdown-toggle {
+  color: #ffffff;
+  background-color: #ff1493;
+  border-color: #ff1493;
+}
+
+.btn-pink:not(:disabled):not(.disabled):active:focus,
+.btn-pink:not(:disabled):not(.disabled).active:focus,
+.show > .btn-pink.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgba(255, 105, 180, 0.5);
+}
+/* いいねボタンスタイル */
+
+
+
+
+.favorite-link {
+  text-decoration: none;
+}
+
+.unfavorite-btn {
+  font-size: 1em;
+  color: #808080;
+}
+
+.favorite-btn {
+  font-size: 1em;
+  color: #F075CE;
+}
+/* フォローボタン */
+.follow-btn {
+  display: inline-block;
+  padding: 5px 10px;
+  background-color: #007bff;
+  color: #fff;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.follow-btn.followed {
+  background-color: #dc3545;
+}
+
+.follow-btn:hover {
+  background-color: #dc3545;
+}
+.search_form {
+  background-color: #F2D2E0;
+}
+.navbar {
+  background-color: #7BACC7;
+}
+.page_contents{
+  background-color: #E4F4F3;
+  min-height: 100vh;
+  
+}
+body{
+  background-color: #E4F4F3;
+
+}
+.footer_contents{
+  background-color: #C2EBEE;
+}
+/*ロゴやアイコンのレイアウト  */
+  .logo {
+    border-radius: 50%;
+    border: 4px solid pink; /* ピンクの線 */
+    box-shadow: 0 0 6px grey; /* グレーの影 */
+    width: 150px; /* 画像の最大幅を100%に設定 */
+    padding: 0,0,0,5%;
+  }
+  .header_image {
+    position: relative;
+  }
+  .header-image img {
+    width: 100%;
+    display: block;
+  }
+
+  .icon_image {
+    border-radius: 50%;
+    border: 4px solid #6D9295;  /* グレーの線 */
+    box-shadow: 0 0 10px grey; /* グレーの影 */
+    padding: 0,0,0,5%;
+    overflow: hidden; /* 余分な部分を非表示にする */
+    position: absolute;
+    bottom: -120px; /* ヘッダーの下端からの距離（任意に調整） */
+    left: 10px; /* ヘッダーの左端からの距離（任意に調整） */
+    z-index: 1; /* アイコン画像を前面に表示 */
+  }
+  .user_name {
+    position: absolute;
+    bottom: -120px; /* ヘッダーの下端からの距離（任意に調整） */
+    left: 300px; /* ヘッダーの左端からの距離（任意に調整） */
+    z-index: 1; /* アイコン画像を前面に表示 */
+    overflow: hidden; /* 余分な部分を非表示にする */
+  }
+  /*投稿画像のアイコン  */
+.painting_icon {
+  /* 投稿画像の角が少し丸くなるように */
+  border-radius: 5px;
+  /* 投稿画像から影が落ちるように */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  /* 境界線が6D9295の線で囲まれるように */
+  overflow: hidden; /* 余分な部分を非表示にする */
+  border: 2px solid #6D9295;
+  /* カーソルが重なった時少し画像が暗くなるように */
+  transition: filter 0.2s;
+}
+
+/* カーソルが重なったときのスタイル */
+.painting_icon:hover {
+  filter: brightness(80%);
+}
+/*ランキング機能の装飾  */
+.index-1 {
+  font-weight: bold;
+  color: #FFD700; /* 暗めの金色 */
+}
+
+.index-2 {
+  font-weight: bold;
+  color: #C0C0C0; /* 銀色 */
+}
+
+.index-3 {
+  font-weight: bold;
+  color: #B87333; /* 銅色 */
+}
+/*トップ画面  */
+.back-image-container {
+  position: relative;
+}
+
+.back-image {
+  /* 画像が背景いっぱいに広がるように設定 */
+  width: 100%;
+  height: 100%;
+}
+
+.overlay {
+  /* 背景画像を暗くするためのスタイル */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; /* 画像の縦幅と合わせる */
+  background-color: rgba(0, 0, 0, 0.5); /* ここで背景の暗さを調整（0.5は半透明） */
+  display: flex; /* 子要素を中央揃えするために Flexbox を使う */
+  justify-content: center; /* 横方向（左右）の中央揃え */
+  align-items: center; /* 縦方向（上下）の中央揃え */
+}
+
+.main-visual-text {
+  color: white; /* テキストの色を白に設定 */
+  font-size: 24px;
+  text-align: center; /* テキストを中央揃えにする */
+}
+
+/* テキストのスタイルを追加 */
+.overlay p {
+  color: white; /* テキストの色を白に設定 */
+  font-size: 24px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* テキストを中央に配置 */
+}
+.delete-btn {
+  height: 38px;
+  font-size:16px;
+}

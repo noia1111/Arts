@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Arts</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <script src="https://kit.fontawesome.com/1eabf4817e.js" crossorigin="anonymous"></script>
+  <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark">
+<div class="logo_area">
+  <% if admin_signed_in? %>
+    <a class="" href="/admin/homes/top"><%= image_tag 'logo_reversal.jpg', class: "logo" %></a>
+  <% else %>
+    <a class="" href="/"><%= image_tag 'logo.jpg', class: "logo" %></a>
+  <% end %>
+</div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto">
+
+      <% if user_signed_in? %>
+
+      <div>
+        <p style="color: #ffcccc; padding: 5px;">ようこそ<%= current_user.name %>さん！</p>
+      </div>
+
+      <li class="nav-link">
+        <%= link_to user_path(current_user.id) do %>
+          <p><button type="button" class="btn btn-outline-light">マイページ</button></p>
+        <% end %>
+      </li>
+
+      <li class="nav-link">
+        <%= link_to new_painting_path do %>
+          <p><button type="button" class="btn btn-outline-light">新規投稿</button></p>
+        <% end %>
+      </li>
+
+      <li class="nav-link">
+        <%= link_to users_path do %>
+          <p><button type="button" class="btn btn-outline-light">ランキング</button></p>
+        <% end %>
+      </li>
+
+      <li class="nav-link">
+        <%= link_to destroy_user_session_path, method: :delete, class: "logout" do %>
+          <p><button type="button" class="btn btn-outline-light">ログアウト</button></p>
+        <% end %>
+      </li>
+
+      <% elsif admin_signed_in? %>
+      <div>
+        <p style="color: #ffcccc; padding: 5px;">管理者でログインしています</p>
+      </div>
+      
+      <li class="nav-link">
+        <%= link_to admin_users_path do %>
+          <p><button type="button" class="btn btn-outline-light">ランキング</button></p>
+        <% end %>
+      </li>
+
+      <li class="nav-link">
+        <%= link_to destroy_admin_session_path, method: :delete do %>
+          <p><button type="button" class="btn btn-outline-light">ログアウト</button></p>
+        <% end %>
+      </li>
+
+      <% else %>
+
+      <li class="nav-link">
+        <%= link_to new_user_registration_path do %>
+          <p><button type="button" class="btn btn-outline-light">新規登録</button></p>
+        <% end %>
+      </li>
+
+      <li class="nav-link">
+        <%= link_to new_user_session_path do %>
+          <p><button type="button" class="btn btn-outline-light">ログイン</button></p>
+        <% end %>
+      </li>
+
+      <li class="nav-link">
+        <%= link_to homes_about_path do %>
+          <p><button type="button" class="btn btn-outline-light">About</button></p>
+        <% end %>
+      </li>
+      
+      <li class="nav-link">
+        <%= link_to users_path do %>
+          <p><button type="button" class="btn btn-outline-light">ランキング</button></p>
+        <% end %>
+      </li>
+      
+      <% end %>
+    </ul>
+  </div>
+</nav>
+<div class='search_form d-flex justify-content-end'>
+  <div class="mr-3"　style="float: right;">
+    <%= render 'layouts/search' %>
+  </div>
+</div>
+<div class="page_contents">
+  <%= yield %>
+</div>
+<div class="footer_contents">
+  <%= render 'layouts/footer' %>
+</div>
+</body>
+</html>

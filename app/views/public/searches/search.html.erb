@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="d-flex justify-content-center">
+    <div class="col-md-12">
+      
+      <h2>検索結果</h2>
+      
+      <table class="table table-hover table-inverse">
+        <!--検索対象モデルがUserの時 -->
+        <% if @range == "クリエイター検索" %>
+          <tbody>
+            <% @users.each do |user| %>
+              <tr>
+                <td>
+                  <%= link_to user_path(user.id) do %>
+                  <%= image_tag user.get_icon_image(100, 100) %>
+                  <% end %>
+                </td>
+                <td class="align-middle">
+                  <%= link_to user_path(user.id) do %>
+                  <span class="display-4"><%= user.name %></span>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        <% else %>
+          <!--検索対象モデルがUserではない時(= 検索対象モデルがPaintingの時) -->
+          <%= render 'public/users/painting_index', paintings: @paintings %>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
