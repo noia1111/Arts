@@ -3,6 +3,7 @@ class Public::UsersController < ApplicationController
     @user = User.find(params[:id])
     @paintings = @user.paintings.page(params[:page])
     if @user.is_deleted == true
+      flash[:notice] = "このユーザーは退会済です"
       redirect_to root_path
     end
   end

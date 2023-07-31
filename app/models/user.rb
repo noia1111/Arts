@@ -20,8 +20,10 @@ class User < ApplicationRecord
   def following?(user)
     followings.include?(user)
   end
-  
-
+  # バリデーションの設定
+  validates :name, presence: true
+  validates :age, presence: true
+  validates :is_male, presence: true
   # Paintingsモデルとのアソシエーション
   has_many :paintings, dependent: :destroy
   # Paintingsモデルとのアソシエーション
@@ -38,7 +40,7 @@ class User < ApplicationRecord
     end
     header_image.variant(resize: "#{width}x#{height}!").processed
   end
-  
+
   def get_icon_image(width, height)
     unless icon_image.attached?
       file_path = Rails.root.join('app/assets/images/no_icon_image.jpg')
@@ -50,12 +52,12 @@ class User < ApplicationRecord
   def self.looks(word)
       @user = User.where("name LIKE?","%#{word}%")
   end
-  
-  
-  
-  
-  
-  
-  
+
+
+
+
+
+
+
 end
 

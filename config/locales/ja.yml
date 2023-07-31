@@ -1,0 +1,15 @@
+ja:
+  activemodel:
+    models:
+      user: "ユーザー"
+    　painting: "作品"
+    attributes:
+      user:
+    　   email: "メールアドレス"
+    　   password: "パスワード"
+    　   name: "ユーザーネーム"
+    　   age: "年齢"
+    　   is_male: "性別"
+    　painting:
+    　  title: "タイトル"
+    　 image: "画像"

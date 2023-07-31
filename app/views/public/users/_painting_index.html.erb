@@ -1,16 +1,42 @@
 <div class="container">
   <div class="d-flex flex-wrap align-items-center">
     <% paintings.each do |painting| %>
-      <!-- 非公開設定かつ現在ユーザーの作品でない場合を取り除く条件分岐 -->
-      <% if painting.is_opened || painting.user == current_user %>
-        <div class="d-block mx-auto bg-lightgray rounded" style="padding:60px,30px;">
-          <%= link_to painting_path(painting.id) do %>
-          <div class="painting_icon">
-            <%= image_tag painting.get_image(200, 200) %>
+      <!-- 非公開設定かつ現在ユーザーの作品でない場合を取り除く条件分岐 -->  <!-- painting.user == current_user -->
+      <% if user_signed_in? %>
+      
+        <% if painting.user == current_user %>
+          <div class="d-block mx-auto bg-lightgray rounded" style="padding:60px,30px;">
+            <%= link_to painting_path(painting.id) do %>
+            <div class="painting_icon">
+              <%= image_tag painting.get_image(200, 200) %>
+            </div>
+            <% end %>
+            <div class="text-center"><strong><%= painting.title %></strong></div>
           </div>
-          <% end %>
-          <div class="text-center"><strong><%= painting.title %></strong></div>
-        </div>
+        <% elsif  painting.is_opened == true && painting.user.is_deleted == false  %>
+          <div class="d-block mx-auto bg-lightgray rounded" style="padding:60px,30px;">
+            <%= link_to painting_path(painting.id) do %>
+            <div class="painting_icon">
+              <%= image_tag painting.get_image(200, 200) %>
+            </div>
+            <% end %>
+            <div class="text-center"><strong><%= painting.title %></strong></div>
+          </div>
+        <% end %>
+      
+      <% else %>
+      
+        <% if painting.is_opened == true && painting.user.is_deleted == false %>
+          <div class="d-block mx-auto bg-lightgray rounded" style="padding:60px,30px;">
+            <%= link_to painting_path(painting.id) do %>
+            <div class="painting_icon">
+              <%= image_tag painting.get_image(200, 200) %>
+            </div>
+            <% end %>
+            <div class="text-center"><strong><%= painting.title %></strong></div>
+          </div>
+        <% end %>
+        
       <% end %>
     <% end %>
   </div>
