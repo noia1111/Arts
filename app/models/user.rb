@@ -23,7 +23,6 @@ class User < ApplicationRecord
   # バリデーションの設定
   validates :name, presence: true
   validates :age, presence: true
-  validates :is_male, presence: true
   # Paintingsモデルとのアソシエーション
   has_many :paintings, dependent: :destroy
   # Paintingsモデルとのアソシエーション
