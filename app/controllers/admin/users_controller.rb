@@ -20,10 +20,7 @@ class Admin::UsersController < ApplicationController
   end
   
   def index
-    @users = User.select('users.*, COUNT(favorites.id) AS total_favorites')
-                 .joins(paintings: :favorites)
-                 .group('users.id')
-                 .order('total_favorites DESC')
+    @users = User.all
   end
   
   def check
