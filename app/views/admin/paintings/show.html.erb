@@ -6,14 +6,14 @@
         <%= flash[:notice] %>
       </div>
 
-        <div class="form-group">
-            <%= image_tag @painting.get_image(512,512) %>
+        <div class="image-container">
+            <%= image_tag @painting.get_image2 %>
         </div>
         <% if @painting.caption.present? %>
         <h4>説明<br>
           <%= @painting.caption %></h4>
-        <% end %> 
-          
+        <% end %>
+
         <div class="form-group">
           <%= link_to admin_user_path(@painting.user) do %>
             <%= image_tag @painting.user.get_icon_image(100,100),style: "border-radius: 50%; border: 4px solid #6D9295; box-shadow: 0 0 6px grey; overflow: hidden;" %><br>
