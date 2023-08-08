@@ -31,7 +31,7 @@
 - テーブル定義書：https://docs.google.com/spreadsheets/d/1bq_18iqtpPu1_St02CeN-VA1B8xWRKmz8AJQV-pFbW8/edit#gid=285865612
 
 ## 開発環境
-- OS：Linux(CentOS)
+- OS：Amazon Linux release 2 (Karoo)
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery

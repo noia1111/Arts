@@ -1,0 +1,22 @@
+        <table>
+          <% painting.painting_comments.each do |painting_comment| %>
+            <tr>
+              <td>
+                <%= link_to user_path(painting_comment.user) do %>
+                  <%= image_tag painting_comment.user.get_icon_image(100,100) %><br>
+                  <%= painting_comment.user.name %>
+                <% end %>
+              </td>
+              <td>
+                <%= painting_comment.comment %>
+              </td>
+              <% if painting_comment.user == current_user %>
+                <td>
+                  <%= link_to painting_painting_comment_path(painting_id: @painting.id, id: painting_comment.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" do %>
+                  <i class="fa-sharp fa-solid fa-trash"></i>
+                  <% end %>
+                </td>
+              <% end %>
+            </tr>
+          <% end %>
+        </table>

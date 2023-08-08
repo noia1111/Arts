@@ -1,0 +1,3 @@
+$('#painting-comments').html("<%= j(render "public/painting_comments/show", painting: @painting) %>");
+$('#comment_count').html("<%= @painting.painting_comments.count %>")
+$("textarea").val('');

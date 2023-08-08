@@ -34,42 +34,15 @@
         <% end %>
 
         <div class="form-group">
-          コメント件数：<%= @painting.painting_comments.count %>
+          コメント件数：<span id="comment_count"><%= @painting.painting_comments.count %></span>
         </div>
 
-        <table>
-          <% @painting.painting_comments.each do |painting_comment| %>
-            <tr>
-              <td>
-                <%= link_to user_path(painting_comment.user) do %>
-                  <%= image_tag painting_comment.user.get_icon_image(100,100) %><br>
-                  <%= painting_comment.user.name %>
-                <% end %>
-              </td>
-              <td>
-                <%= painting_comment.comment %>
-              </td>
-              <% if painting_comment.user == current_user %>
-                <td>
-                  <%= link_to painting_painting_comment_path(painting_id: @painting.id, id: painting_comment.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" do %>
-                  <i class="fa-sharp fa-solid fa-trash"></i>
-                  <% end %>
-                </td>
-              <% end %>
-            </tr>
-          <% end %>
-        </table>
-      <% if user_signed_in? %>
-       <%= form_with model: [@painting, @painting_comment] do |f| %>
-         <div class="form-group">
-           <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
-         </div>
-
-         <div class="form-group">
-           <%= f.submit "送信する", class: "btn btn-primary" %>
-         </div>
-       <% end %>
-      <% end %>
+      <div id="painting-comments">
+        <%= render "public/painting_comments/show" , { painting: @painting , painting_comment: @painting_comment } %><br>
+      </div>
+      <div id="comment-form">
+        <%= render "public/painting_comments/form" , { painting: @painting , painting_comment: @painting_comment } %>
+      </div>
     </div>
   </div>
 </div>

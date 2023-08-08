@@ -13,7 +13,7 @@ class Public::PaintingsController < ApplicationController
       render :new
     end
   end
-  
+
   def edit
     is_matching_painting
     @painting = Painting.find(params[:id])
@@ -28,13 +28,14 @@ class Public::PaintingsController < ApplicationController
       render "edit"
     end
   end
-  
+
 
   def index
     @paintings = Painting.page(params[:page])
   end
 
   def show
+    is_opened?
     @painting = Painting.find(params[:id])
     @painting_comment = PaintingComment.new
   end
@@ -56,6 +57,13 @@ class Public::PaintingsController < ApplicationController
   def is_matching_painting
     user = Painting.find(params[:id]).user
     unless user.id == current_user.id
+      redirect_to root_path
+    end
+  end
+
+  def is_opened?
+    painting = Painting.find(params[:id])
+    unless (painting.is_opened == true) || painting.user == current_user
       redirect_to root_path
     end
   end
