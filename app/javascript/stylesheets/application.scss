@@ -97,6 +97,16 @@
   height: 38px;
   color: white;
 }
+#follow-button {
+  /* ボーダーをなくす */
+  border: none;
+  /* 角を少し丸くする */
+  border-radius: 5px;
+  /* カーソルが重なったときに少し暗くする */
+  transition: filter 0.2s;
+  height: 38px;
+  color: white;
+}
 
 /* カーソルが重なったときのスタイル */
 #intro-button:hover {
