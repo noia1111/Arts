@@ -16,7 +16,7 @@
     </div>
     <div class=" col-md-2 user_name">
       <h5><td class="col-md-3"><%= @user.name %></td><h5>
-      
+
     <%= link_to  user_followings_path(@user) do %>
       フォロー数: <%= @user.followings.count %><br>
     <% end %>
@@ -35,9 +35,9 @@
     <%= link_to "いいね一覧", favorites_user_path(@user), class: "btn btn-pink" %>
     <% if current_user && current_user != @user %>
       <% if current_user.following?(@user) %>
-        <%= link_to "フォロー中", user_relationships_path(@user.id), method: :delete, class: "follow-btn followed" %>
+        <%= link_to "フォロー中", user_relationships_path(@user.id), method: :delete, class: "follow-button follow-btn followed  btn" %>
       <% else %>
-        <%= link_to "フォロー", user_relationships_path(@user.id), method: :post, class: "follow-btn" %>
+        <%= link_to "フォロー", user_relationships_path(@user.id), method: :post, class: "follow-button follow-btn  btn" %>
       <% end %>
     <% end %>
     <div id="modal" class="modal">

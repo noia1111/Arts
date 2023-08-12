@@ -42,9 +42,9 @@
     <%= link_to "いいね一覧", favorites_user_path(@user), class: "btn btn-pink" %>
     <% if current_user && current_user != @user %>
       <% if current_user.following?(@user) %>
-        <%= link_to "フォロー中", user_relationships_path(@user.id), method: :delete, class: "follow-btn followed follow-button btn" style = "height: 38px;" %>
+        <%= link_to "フォロー中", user_relationships_path(@user.id), method: :delete, class: "follow-btn followed follow-button btn" %>
       <% else %>
-        <%= link_to "フォロー", user_relationships_path(@user.id), method: :post, class: "follow-btn follow-button btn" style = "height: 38px;" %>
+        <%= link_to "フォロー", user_relationships_path(@user.id), method: :post, class: "follow-btn follow-button btn" %>
       <% end %>
     <% end %>
     <div id="modal" class="modal">

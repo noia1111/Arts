@@ -104,7 +104,7 @@
   border-radius: 5px;
   /* カーソルが重なったときに少し暗くする */
   transition: filter 0.2s;
-  height: 38px;
+  height: 40px;
   color: white;
 }
 
@@ -174,7 +174,6 @@
 /* フォローボタン */
 .follow-btn {
   display: inline-block;
-  padding: 5px 10px;
   background-color: #007bff;
   color: #fff;
   border-radius: 5px;
