@@ -1,4 +1,5 @@
 class Admin::UsersController < ApplicationController
+  
   def show
     @user = User.find(params[:id])
     @paintings = @user.paintings.page(params[:page])
