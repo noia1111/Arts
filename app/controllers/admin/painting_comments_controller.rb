@@ -8,7 +8,7 @@ class Admin::PaintingCommentsController < ApplicationController
   end
 
   def destroy
-    @painting_comment = PaintingComment.find(params[:painting_id])
+    @painting_comment = PaintingComment.find(params[:id])
     @painting_comment.destroy
     redirect_to admin_painting_path(params[:painting_id])
   end

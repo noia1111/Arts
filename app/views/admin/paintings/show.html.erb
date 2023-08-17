@@ -54,7 +54,7 @@
               </td>
               <% if admin_signed_in? %>
                 <td>
-                  <%= link_to 'コメントを消す', painting_painting_comment_path(painting_comment.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %>
+                  <%= link_to 'コメントを消す', admin_painting_painting_comment_path(painting_id: @painting.id, id: painting_comment.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %>
                 </td>
               <% end %>
             </tr>
