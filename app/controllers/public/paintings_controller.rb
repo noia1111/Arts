@@ -1,4 +1,7 @@
 class Public::PaintingsController < ApplicationController
+  before_action :is_matching_painting, only: [:edit, :update, :destroy]
+
+  
   def new
     @painting = Painting.new
   end
@@ -15,12 +18,11 @@ class Public::PaintingsController < ApplicationController
   end
 
   def edit
-    is_matching_painting
+    
     @painting = Painting.find(params[:id])
   end
 
   def update
-    is_matching_painting
     @painting = Painting.find(params[:id])
     if @painting.update(painting_params)
       redirect_to painting_path(@painting), notice: "You have updated painting successfully."
@@ -41,7 +43,6 @@ class Public::PaintingsController < ApplicationController
   end
 
   def destroy
-    is_matching_painting
     painting = Painting.find(params[:id])
     painting.destroy
     redirect_to user_path(current_user.id)
