@@ -1,4 +1,5 @@
 class Public::PaintingCommentsController < ApplicationController
+  before_action :is_matching_comment, only: [:destroy]
   def create
     painting = Painting.find(params[:painting_id])
     comment = current_user.painting_comments.new(painting_comments_params)
@@ -8,7 +9,6 @@ class Public::PaintingCommentsController < ApplicationController
   end
 
   def destroy
-    is_matching_comment
     @painting_comment = PaintingComment.find(params[:id])
     @painting_comment.destroy
     redirect_to painting_path(params[:painting_id])
