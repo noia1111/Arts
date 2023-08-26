@@ -1,4 +1,5 @@
 class Public::UsersController < ApplicationController
+  before_action :is_matching, only: [:edit, :update]
   def show
     @user = User.find(params[:id])
     @paintings = @user.paintings.page(params[:page])
@@ -9,12 +10,10 @@ class Public::UsersController < ApplicationController
   end
 
   def edit
-     is_matching
     @user = current_user
   end
 
   def update
-     is_matching
     if current_user.update(user_params)
       redirect_to  user_path(current_user.id)
     else
