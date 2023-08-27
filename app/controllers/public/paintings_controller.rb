@@ -1,5 +1,6 @@
 class Public::PaintingsController < ApplicationController
   before_action :is_matching_painting, only: [:edit, :update, :destroy]
+  before_action :is_opened?, only: [:show]
 
   
   def new
@@ -37,7 +38,6 @@ class Public::PaintingsController < ApplicationController
   end
 
   def show
-    is_opened?
     @painting = Painting.find(params[:id])
     @painting_comment = PaintingComment.new
   end
