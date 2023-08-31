@@ -1,4 +1,5 @@
 class Admin::PaintingsController < ApplicationController
+  before_action :is_admin?, only: [:edit, :update, :destroy]
   def new
     @painting = Painting.new
   end
@@ -15,12 +16,10 @@ class Admin::PaintingsController < ApplicationController
   end
   
   def edit
-    is_admin?
     @painting = Painting.find(params[:id])
   end
 
   def update
-    is_admin?
     @painting = Painting.find(params[:id])
     if @painting.update(painting_params)
       redirect_to admin_painting_path(@painting), notice: "You have updated painting successfully."
@@ -40,7 +39,6 @@ class Admin::PaintingsController < ApplicationController
   end
 
   def destroy
-    is_admin?
     painting = Painting.find(params[:id])
     painting.destroy
     redirect_to admin_user_path(painting.user.id)
