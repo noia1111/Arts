@@ -1,4 +1,5 @@
 class Admin::UsersController < ApplicationController
+  before_action :is_admin?, only: [:edit, :update, :check, :withdraw]
   
   def show
     @user = User.find(params[:id])
