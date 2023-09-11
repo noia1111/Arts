@@ -35,4 +35,6 @@ class Painting < ApplicationRecord
   def self.looks(word)
       @painting = Painting.where("title LIKE?","%#{word}%")
   end
+  has_many :notifications, dependent: :destroy
+
 end
