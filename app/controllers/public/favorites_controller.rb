@@ -4,6 +4,8 @@ class Public::FavoritesController < ApplicationController
     @painting = Painting.find(params[:painting_id])
     favorite = current_user.favorites.new(painting_id: @painting.id)
     favorite.save
+    post.create_notification_like!(current_user)
+
   end
 
   def destroy
