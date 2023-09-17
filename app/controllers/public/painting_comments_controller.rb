@@ -5,6 +5,8 @@ class Public::PaintingCommentsController < ApplicationController
     comment = current_user.painting_comments.new(painting_comments_params)
     comment.painting_id = painting.id
     comment.save
+    @painting.create_notification_comment!(current_user, @comment.id)
+
     redirect_to painting_path(painting)
   end
 
