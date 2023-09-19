@@ -37,6 +37,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     get "search" => "searches#search"
     get 'homes/top'
     get 'homes/about'
+    resources :notifications, only: :index
   end
   namespace :admin do
     get '/' => "homes#top"
